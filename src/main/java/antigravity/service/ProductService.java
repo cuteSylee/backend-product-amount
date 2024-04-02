@@ -1,43 +1,22 @@
 package antigravity.service;
 
 import antigravity.domain.entity.Product;
-import antigravity.domain.entity.PromotionProducts;
 import antigravity.model.request.ProductInfoRequest;
 import antigravity.model.response.ProductAmountResponse;
 import antigravity.repository.ProductRepository;
-import antigravity.repository.PromotionProductsRepository;
-import antigravity.repository.PromotionRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class ProductService {
-	private final ProductRepository productRepository;
-	private final PromotionRepository promotionRepository;
+    private final ProductRepository repository;
 
     public ProductAmountResponse getProductAmount(ProductInfoRequest request) {
-    
+        System.out.println("상품 가격 추출 로직을 완성 시켜주세요.");
 
-        Product product = productRepository.findById(request.getProductId()).orElseThrow();
-        
-        for(long couponId : request.getCouponIds()) {
-        	System.out.println(couponId);
-        }
+        Product product = repository.getProduct(request.getProductId());
 
-        System.out.println("ggggg");
-
-        return ProductAmountResponse.builder()
-        		.name("")
-        		.originPrice(110)
-        		.discountPrice(0)
-        		.finalPrice(0)
-        		.build();
+        return null;
     }
-    
-    
 }
