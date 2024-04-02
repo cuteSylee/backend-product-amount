@@ -11,11 +11,13 @@ import org.springframework.stereotype.Repository;
 public class ProductRepository {
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public Product getProduct(int id) {
+//    public Product getProduct(int id) {
+    public void test() {
         String query = "SELECT * FROM `product` WHERE id = :id ";
 
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("id", id);
+        
 
         return namedParameterJdbcTemplate.queryForObject(
                 query,
